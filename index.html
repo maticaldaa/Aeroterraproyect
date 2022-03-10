@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Aeroterra proyect</title>
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 89%;
+            width: 89%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.22/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.22/"></script>
+    <script>
+        require(["esri/Map", "esri/views/MapView"], (Map, MapView) => {
+            const map = new Map({
+                basemap: "topo-vector"
+            });
+            const view = new MapView({
+                container: "viewDiv",
+                map: map,
+                zoom: 4,
+                center: [-60, -25]
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="viewDiv"></div>
+<form action="../../form-result.php" method="post" target="_blank">
+    <p><label>Descripcion: <input type="text" name="nombre"></label></p>
+    <p><label>Direccion: <input type="text" name="direccion"></label></p>
+    <p><label>Numero telefonico: <input type="text" name="numerotel"></label></p>
+    <p><label>Coordenadas X e Y: <input type="text" name="coordenadas"></label></p>
+
+    <div class="categoria" style="width:204px;">
+        <label>
+            <select>
+                <option value="0">Categoria:</option>
+                <option value="1">Comercial</option>
+                <option value="2">Residencial</option>
+                <option value="3">Mixta</option>
+            </select>
+        </label>
+    </div>
+
+    <p><input type="submit" value="Agregar"></p>
+</form>
+</body>
+</html>
